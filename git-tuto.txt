@@ -1,0 +1,78 @@
+#Set Up Git configiguration
+git config --global user.name "jamalgithub"
+git config --global user.email jelmoubarik@gmail.com
+
+#show configuration
+git config --global --list
+
+#create a folder to be a local repository
+mkdir git
+cd git
+mkdir git_tutorial
+
+#create remote repo git_tutorial on github
+
+#clone remote repo to local repo
+#this will create a local repo git_tutorial linked to remote repo git_tutorial on github
+cd git
+git clone https://github.com/jamalgithub/git_tutorial.git
+
+#initialize local repo and add remote repo to be linked to the local repo
+cd git
+cd git_tutorial
+git init
+git remote add origin "https://github.com/jamalgithub/git_tutorial.git"
+
+#get remote repo into local repo
+git pull origin master
+#if fatal: refusing to merge unrelated histories
+git pull origin master --allow-unrelated-histories
+
+#Tell you which files are added or not to git index and whether are ready to be committed
+git status
+
+#add specific file to giti ndex
+git add git_phases.png
+
+#add all files to the git index
+git add -A
+
+#Commit changes to local repo for a specific file with description message
+git commit -m "Commit git_phases image"
+
+#Commit changes to local repo for all files with description message
+git commit -a -m "Commit all files together"
+
+#show all commit
+git log
+
+#show your branchs
+git branch
+
+#Create a branch slave. At first it has all master files where it has been created
+#A branche is pointer to a specific commit
+git branch slave
+
+#switch between branchs.for example branch slave
+git checkout slave
+ls
+
+#Create a branch slave and switch into it
+git checkout -b slave
+
+#show content of git-tuto.txt file
+cat git-tuto.txt
+
+#Merge branch slave into branch master in not linear sequence of commits
+git checkout master
+git merge slave
+
+#Merge branch slave into branch master in linear sequence of commits
+git checkout master
+git rebase slave
+
+#return back to a previews version of a file git-tuto.txt
+git log
+#take the first 8 digit of the hash relied to git-tuto.txt modification.here is 2bb005e4
+git checkout 2bb005e4 git-tuto.txt
+
