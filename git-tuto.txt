@@ -53,6 +53,9 @@ git branch
 #A branche is pointer to a specific commit
 git branch slave
 
+#
+git push origin master
+
 #switch between branchs.for example branch slave
 git checkout slave
 ls
